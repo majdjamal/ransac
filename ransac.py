@@ -3,6 +3,10 @@
 
 __author__ = "Majd Jamal"
 
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
 class RANSAC:
 	"""
 	Random Sample Concensus
@@ -37,7 +41,7 @@ class RANSAC:
 
 	def fit(self, X):
 		""" Train the RANSAC regressor. This function finds
-			the optimal parameters and inliers.  
+			the optimal parameters and inliers.
 		:param X: Data points, with shape (Npts x Ndim = 2)
 		"""
 		Npts, _ = X.shape
@@ -51,7 +55,7 @@ class RANSAC:
 
 			rndPoints = np.random.randint(low = 0, high=Npts, size=2)
 			rndPoints = X[rndPoints, :]
-		
+
 			slope, intercept, _, _, _ = stats.linregress(rndPoints[:, 0], rndPoints[:,1])
 			y_pred = self.func(x1, slope, intercept)
 			residual_error = np.subtract(y_pred, x2)
@@ -68,7 +72,7 @@ class RANSAC:
 	def predict(self, x):
 		""" Predicts if a point is an inlier or outlier.
 		:param x: a data point.
-		:return: a signal, 1 means inlier and 0 means outlier. 
+		:return: a signal, 1 means inlier and 0 means outlier.
 		"""
 		x1 = x[0]
 		x2 = x[1]
