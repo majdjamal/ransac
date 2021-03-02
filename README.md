@@ -16,5 +16,5 @@ python experiment.py
 
 The model finds inliers by choosing two random points, computes a line, and investigates which points are close to it. It is done iteratively, as seen in figure 1. The line that has the most points close to it wins, and these points become inliers.
 
-![alt text]("https://s4.gifyu.com/images/ransac.gif")
+![alt text](https://media.giphy.com/media/HlKD5zj41UMUccs4zt/giphy.gif)
 Figure 1. A demonstration of RANSAC fining the optimal parameters. Red points show inliers, and blue points show outliers. 
